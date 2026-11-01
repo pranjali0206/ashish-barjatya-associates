@@ -29,13 +29,15 @@ export default function SplitText({
           const str = isEm ? line.text : line
           return (
             <span key={li} className={`split-line${isEm ? ' em' : ''}`}>
-              {str.split(' ').map((w, wi) => {
+              {str.split(' ').map((raw, wi) => {
                 const idx = i++
+                const it = raw.startsWith('*') && raw.endsWith('*')
+                const w = it ? raw.slice(1, -1) : raw
                 return (
                   <span key={wi}>
                     <span className="split-mask">
                       <motion.span
-                        className="split-word"
+                        className={`split-word${it ? ' it' : ''}`}
                         variants={{
                           hide: { y: '110%', rotate: 3 },
                           show: { y: '0%', rotate: 0, transition: { duration, ease: EASE, delay: delay + idx * stagger } },

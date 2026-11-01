@@ -28,9 +28,13 @@ static-version/      the earlier plain-HTML version, kept for reference
 
 ## Deploy
 
-`npm run build`, then upload the contents of `dist/` to any static host
-(Netlify, Vercel, cPanel public_html, etc.). `base: './'` is set, so it also works
-from a sub-folder.
+**Cloudflare Workers (connected to the GitHub repo):** every push to `main` runs
+`npm run build` then `npx wrangler deploy`. `wrangler.jsonc` serves `dist/` as
+static assets. Requires Vite ≥ 6 (wrangler refuses to deploy older Vite projects).
+
+**Any other static host:** `npm run build`, then upload the contents of `dist/`
+(Netlify, Vercel, cPanel public_html, …). The site expects to live at the domain
+root (`base: '/'`); for a sub-folder, change `base` in `vite.config.js`.
 
 ## Contact details
 
