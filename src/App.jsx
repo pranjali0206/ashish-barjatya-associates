@@ -4,7 +4,6 @@ import Preloader from './components/Preloader'
 import Cursor from './components/Cursor'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
-import Marquee from './components/Marquee'
 import Partners from './components/Partners'
 import About from './components/About'
 import Omaxe from './components/Omaxe'
@@ -27,7 +26,6 @@ export default function App() {
       <Nav ready={ready} />
       <main>
         <Hero ready={ready} />
-        <Marquee />
         <Partners />
         <About />
         <Omaxe />
