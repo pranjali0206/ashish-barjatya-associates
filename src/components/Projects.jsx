@@ -45,7 +45,7 @@ export default function Projects() {
         <div className="sec-head split">
           <div>
             <Reveal as="span" className="eyebrow" amount={.8}>Projects · Indore</Reveal>
-            <SplitText as="h2" lines={['Six townships.', 'One honest shortlist.']} />
+            <SplitText as="h2" lines={['Townships we trust.', 'Plots we stand behind.']} />
           </div>
           <Reveal className="lede" delay={.1}>Every project below is RERA-registered and checked by us before we show it to you. Tell us your budget and plot size — we'll tell you which two to visit first.</Reveal>
         </div>
