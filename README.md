@@ -16,15 +16,23 @@ npm run preview    # serve dist/ at http://localhost:4173
 ## Structure
 
 ```
-public/img/          project photos, founder portraits, Omaxe + Godrej logos
-src/data.js          all copy & project data (edit names, sizes, status, phone here)
-src/App.jsx          section order
-src/components/      one file per section + effects (Preloader, Cursor, Magnetic, SplitText, Reveal)
+public/img/          project photos, founder portraits, Omaxe + Godrej logos, og.jpg (link preview)
+src/data.js          ALL copy, project data and client facts — edit here, not in components
+src/App.jsx          section order: Hero → PartnerStrip → Projects → CtaBand → Corridors
+                     → WhyAbout → Process → Contact → Footer
+src/components/      one file per section + effects (Preloader, Cursor, SplitText, Reveal, Icons)
 src/styles/global.css design tokens + all styles
 scripts/shoot.mjs    dev helper: full-page desktop + mobile screenshots of the preview build
 scripts/overflow.mjs dev helper: lists elements overflowing the viewport
 static-version/      the earlier plain-HTML version, kept for reference
 ```
+
+## Facts to fill in (src/data.js)
+
+These are empty on purpose and their UI stays hidden until set — never guess them:
+`RERA_AGENT_NO`, per-project `rera`, `ADDRESS`, `MAPS_URL`, `HOURS`, `GOOGLE` (rating/count/url),
+`TESTIMONIALS` (quote, name, locality, project, year), `FOUNDED_YEAR`. `YEARS` drives every
+"20 years" mention on the page.
 
 ## Deploy
 

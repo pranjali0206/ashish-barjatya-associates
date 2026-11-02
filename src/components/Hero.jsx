@@ -1,91 +1,56 @@
-import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import SplitText from './SplitText'
-import Magnetic from './Magnetic'
-import useCountUp from '../hooks/useCountUp'
-import { img, wa } from '../data'
+import { img, wa, STATS, HINDI_LINE } from '../data'
 import { scrollToId } from '../hooks/useSmoothScroll'
 
 const EASE = [0.22, 1, 0.36, 1]
-const DUR = 7000
+// Swap the filename to change the hero image (public/img). Ideal: ≥1920px wide, landscape.
+const HERO_IMAGE = 'hero-skyline.jpg'
 
-// Swap the filename here to change the hero image (one entry = static image, several = slow crossfade).
-const SLIDES = [
-  { src: 'hero-skyline.jpg', pos: '62% 40%' },
-]
-
-const fade = (ready, delay, y = 22) => ({
+const fade = (ready, delay, y = 18) => ({
   initial: { opacity: 0, y },
   animate: ready ? { opacity: 1, y: 0 } : {},
-  transition: { duration: 1.1, ease: EASE, delay },
+  transition: { duration: .8, ease: EASE, delay },
 })
-
-function Stat({ n, suffix, l1, l2, ready, delay }) {
-  const v = useCountUp(n, ready, 1500, delay)
-  return (
-    <div className="hb-stat">
-      <b>{v.toLocaleString('en-IN')}{suffix}</b>
-      <span>{l1}<br />{l2}</span>
-    </div>
-  )
-}
 
 export default function Hero({ ready }) {
   const ref = useRef(null)
-  const [idx, setIdx] = useState(0)
-
-  useEffect(() => {
-    if (!ready || SLIDES.length < 2) return
-    const t = setInterval(() => setIdx((i) => (i + 1) % SLIDES.length), DUR)
-    return () => clearInterval(t)
-  }, [ready])
-
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '16%'])
   const copyY = useTransform(scrollYProgress, [0, 1], ['0%', '-22%'])
-  const copyO = useTransform(scrollYProgress, [0, 0.7], [1, 0])
-
-  const slide = SLIDES[idx]
+  const copyO = useTransform(scrollYProgress, [0, .7], [1, 0])
 
   return (
     <div className="hero-wrap" id="top">
-      <section className="hero" ref={ref}>
+      <section className="hero" ref={ref} aria-label="Introduction">
         <motion.div className="hero-stage" style={{ y: bgY }}>
-          <AnimatePresence initial={false}>
-            <motion.div key={idx} className="hero-slide" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1.6, ease: 'easeInOut' }}>
-              <motion.img
-                src={img(slide.src)}
-                alt=""
-                style={{ objectPosition: slide.pos }}
-                initial={{ scale: 1.1 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: DUR / 1000 + 2, ease: 'linear' }}
-                fetchPriority={idx === 0 ? 'high' : 'auto'}
-              />
-            </motion.div>
-          </AnimatePresence>
+          <motion.img src={img(HERO_IMAGE)} alt="" style={{ objectPosition: '62% 40%' }} initial={{ scale: 1.06 }} animate={ready ? { scale: 1 } : {}} transition={{ duration: 9, ease: 'linear' }} fetchpriority="high" />
         </motion.div>
         <div className="hero-shade" />
 
         <motion.div className="wrap hero-body" style={{ y: copyY, opacity: copyO }}>
-          <motion.span className="hero-kicker" {...fade(ready, 0.45, 0)}>Your property journey, simplified</motion.span>
-          <SplitText as="h1" className="hero-h1" go={ready} delay={0.6} stagger={0.08} duration={1.2} lines={['Where dreams', 'find their address.']} />
-          <motion.p className="hero-lede" {...fade(ready, 1.15)}>
-            An advisor shortlists RERA-verified plots from Omaxe and Godrej Properties, then walks with you from the first site visit to possession.
+          <motion.span className="hero-kicker" {...fade(ready, .1, 0)}>Authorised channel partner · Omaxe &amp; Godrej Properties</motion.span>
+          <SplitText as="h1" className="hero-h1" go={ready} delay={.15} stagger={.06} duration={.9} lines={['Where dreams', 'find their address.']} />
+          <motion.p className="hero-lede" {...fade(ready, .4)}>
+            Residential plots in Omaxe and Godrej townships across Indore — papers checked before you pay a rupee, and one advisor beside you from the first site visit to the registry.
           </motion.p>
-          <motion.div className="hero-actions" {...fade(ready, 1.3)}>
-            <Magnetic><a className="btn btn-gold" href="#omaxe" onClick={(e) => { e.preventDefault(); scrollToId('#omaxe') }}>Explore projects</a></Magnetic>
-            <Magnetic><a className="btn btn-light" href={wa('Hello, I would like to talk to an advisor about a plot.')} target="_blank" rel="noopener">Talk to an advisor</a></Magnetic>
+          {HINDI_LINE && <motion.p className="hero-hindi" lang="hi" {...fade(ready, .5)}>{HINDI_LINE}</motion.p>}
+          <motion.div className="hero-actions" {...fade(ready, .55)}>
+            <a className="btn btn-gold" href="#projects" onClick={(e) => { e.preventDefault(); scrollToId('#projects') }}>Explore projects</a>
+            <a className="btn btn-light" href={wa('Hello, I would like to talk to an advisor about a plot in Indore.')} target="_blank" rel="noopener">Talk to an advisor</a>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Blue stats badge — sits half on the image, half on the white area below */}
       <div className="wrap hero-badge-row">
-        <motion.div className="hero-badge" {...fade(ready, 1.5, 30)}>
-          <Stat n={10} suffix="+" l1="Years experience in" l2="real estate" ready={ready} delay={1500} />
-          <Stat n={100} suffix="+" l1="Happy clients," l2="successfully closed" ready={ready} delay={1650} />
-          <Stat n={1000} suffix="+" l1="Dreams waiting to" l2="find their address" ready={ready} delay={1800} />
+        <motion.div className="hero-badge" {...fade(ready, .65, 26)}>
+          {STATS.map((s) => (
+            <div className="hb-stat" key={s.l1}>
+              <b>{s.n}</b>
+              <span>{s.l1}<br />{s.l2}</span>
+            </div>
+          ))}
         </motion.div>
       </div>
     </div>

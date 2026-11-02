@@ -1,32 +1,40 @@
 import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
 import SplitText from './SplitText'
 import { Reveal } from './Reveal'
-import { CORRIDORS, img } from '../data'
+import { CORRIDORS, PROJECTS, YEARS, mapEmbed, mapLink } from '../data'
 
 export default function Corridors() {
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState(CORRIDORS[0].id)
+  const cur = CORRIDORS.find((c) => c.id === active)
   return (
-    <section className="corridors">
-      <div className="wrap corr-grid">
+    <section className="location" id="location">
+      <div className="wrap loc-grid">
         <div>
-          <Reveal as="span" className="eyebrow" amount={0.8}>Local Expertise</Reveal>
-          <SplitText as="h2" lines={['Rooted in Indore.', 'Focused on', 'what comes next.']} />
-          <Reveal className="lede" delay={0.1}>Indore is the largest city in Madhya Pradesh and its commercial capital — home to IIT and IIM, and consistently ranked India's cleanest city. Its growth moves along a handful of corridors, and every project we represent sits on one of them.</Reveal>
-          <ul className="corr-list">
-            {CORRIDORS.map((c, i) => (
-              <motion.li key={c.t} className={i === active ? 'on' : ''} onMouseEnter={() => setActive(i)} onFocus={() => setActive(i)} tabIndex={0} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.6 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}>
-                <b><small>0{i + 1}</small>{c.t}</b>
-                <p>{c.d}</p>
-              </motion.li>
-            ))}
-          </ul>
+          <Reveal as="span" className="eyebrow" amount={.8}>Where these projects sit</Reveal>
+          <SplitText as="h2" lines={['Four corridors.', 'Every project on one of them.']} />
+          <Reveal className="lede" delay={.1} style={{ marginTop: '1rem' }}>Indore is growing along a handful of roads. Knowing which one suits your commute, your budget and your timeline is half the decision — and the part we've spent {YEARS === 20 ? 'twenty' : YEARS} years learning.</Reveal>
+          <div className="corr-list" role="group" aria-label="Growth corridors">
+            {CORRIDORS.map((c) => {
+              const projs = PROJECTS.filter((p) => p.corridor === c.id)
+              return (
+                <button key={c.id} className="corr-item" aria-pressed={active === c.id} onClick={() => setActive(c.id)}>
+                  <small>{c.n}</small>
+                  <b>{c.t}</b>
+                  <p>{c.d}</p>
+                  <span className="chips">{projs.map((p) => <span className="chip" key={p.id}>{p.name}</span>)}</span>
+                </button>
+              )
+            })}
+          </div>
         </div>
-        <Reveal className="corr-media" delay={0.1} amount={0.3}>
-          <AnimatePresence mode="sync">
-            <motion.img key={active} src={img(CORRIDORS[active].image)} alt={CORRIDORS[active].t} initial={{ opacity: 0, scale: 1.08 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }} />
-          </AnimatePresence>
-          <div className="corr-cap"><span>{CORRIDORS[active].t}</span></div>
+        <Reveal delay={.1} amount={.3}>
+          <div className="map-wrap">
+            <iframe key={cur.id} title={`Map of ${cur.t}, Indore`} src={mapEmbed(cur.q)} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+          </div>
+          <div className="map-cap">
+            <span>{cur.t} · Indore</span>
+            <a className="link" href={mapLink(cur.q)} target="_blank" rel="noopener">Open in Google Maps</a>
+          </div>
         </Reveal>
       </div>
     </section>
