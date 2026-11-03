@@ -1,5 +1,6 @@
-import { img, wa, PHONE, PHONE_RAW, PROJECTS, CORRIDORS, YEARS, FOUNDED_YEAR, ADDRESS, RERA_AGENT_NO, RERA_URL } from '../data'
+import { img, wa, PHONE, PHONE_RAW, PROJECTS, CORRIDORS, YEARS, FOUNDED_YEAR, ADDRESS, RERA_AGENT_NO, RERA_URL, SOCIAL } from '../data'
 import { scrollToId } from '../hooks/useSmoothScroll'
+import { SocialIcon } from './Icons'
 
 export default function Footer() {
   const go = (e, id) => { e.preventDefault(); scrollToId(id) }
@@ -10,10 +11,18 @@ export default function Footer() {
           <div>
             <a href="#top" className="brand" onClick={(e) => go(e, '#top')}>
               <img src={img('aba-logo.jpeg')} alt="" width="42" height="42" />
-              <span><span className="brand-name">Ashish Barjatya</span><span className="brand-sub">Associates · Indore</span></span>
+              <span><span className="brand-name" style={{ color: '#fff' }}>Ashish Barjatya</span><span className="brand-sub">Associates · Indore</span></span>
             </a>
             <p>Authorised channel partner for Omaxe and Godrej Properties in Indore {FOUNDED_YEAR ? `since ${FOUNDED_YEAR}` : `for over ${YEARS} years`}.</p>
-            {RERA_AGENT_NO && <p style={{ marginTop: '.6rem' }}>MP-RERA agent no. {RERA_AGENT_NO} · <a href={RERA_URL} target="_blank" rel="noopener">rera.mp.gov.in</a></p>}
+            <div className="footer-meta">
+              <span>RERA Agent Reg. No. {RERA_AGENT_NO ? <a href={RERA_URL} target="_blank" rel="noopener">{RERA_AGENT_NO}</a> : '[NUMBER]'}</span>
+              <a href="/privacy">Privacy policy</a>
+            </div>
+            <div className="social">
+              {SOCIAL.map((s) => (
+                <a key={s.name} href={s.url || '#'} target={s.url ? '_blank' : undefined} rel="noopener" aria-label={s.name}><SocialIcon name={s.name} /></a>
+              ))}
+            </div>
           </div>
           <div>
             <h4>Projects</h4>

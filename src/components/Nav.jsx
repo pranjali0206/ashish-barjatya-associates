@@ -7,7 +7,7 @@ import { PhoneIcon } from './Icons'
 const LINKS = [
   ['Projects', '#projects'],
   ['Location', '#location'],
-  ['Why us', '#why'],
+  ['About us', '#founders'],
   ['Contact', '#contact'],
 ]
 const EASE = [0.76, 0, 0.24, 1]

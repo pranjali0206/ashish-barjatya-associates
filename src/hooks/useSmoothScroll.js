@@ -8,10 +8,10 @@ gsap.registerPlugin(ScrollTrigger)
 let lenisInstance = null
 export const getLenis = () => lenisInstance
 
-export function scrollToId(id) {
+export function scrollToId(id, offset = 0) {
   const el = document.querySelector(id)
   if (!el) return
-  if (lenisInstance) lenisInstance.scrollTo(el, { offset: 0, duration: 1.4 })
+  if (lenisInstance) lenisInstance.scrollTo(el, { offset, duration: 1.4 })
   else el.scrollIntoView({ behavior: 'smooth' })
 }
 
@@ -19,7 +19,8 @@ export default function useSmoothScroll(enabled = true) {
   const ref = useRef(null)
   useEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduce) return
+    const touch = window.matchMedia('(pointer: coarse)').matches
+    if (reduce || touch) return
     const lenis = new Lenis({ lerp: 0.085, smoothWheel: true, wheelMultiplier: 0.95 })
     lenisInstance = lenis
     ref.current = lenis

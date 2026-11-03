@@ -54,12 +54,12 @@ export const PROJECTS = [
   },
   {
     id: 'godrej-greenview', dev: 'godrej', name: 'Godrej Greenview Estate', area: 'Indore–Ujjain Road, Indore', corridor: 'ujjain',
-    status: 'Booking open', tone: 'open', sizes: '1000 & 1250 sq ft', rera: '', image: 'godrej-greenview.jpg', render: true,
+    status: 'Booking open', tone: 'open', sizes: '1000 & 1250 sq ft', rera: '', image: 'godrej-greenview-aerial.jpg', render: true,
     blurb: 'A Godrej-managed plotted estate with clubhouse and landscaped greens, on the corridor getting metro connectivity.',
   },
   {
     id: 'godrej-verdania', dev: 'godrej', name: 'Godrej Verdania Estate', area: 'Bypass Road, Mangliya, Indore', corridor: 'bypass',
-    status: 'Booking open', tone: 'open', sizes: '1250 – 4000 sq ft', rera: '', image: 'godrej-verdania.jpg', render: true,
+    status: 'Booking open', tone: 'open', sizes: '1250 – 4000 sq ft', rera: '', image: 'godrej-verdania-aerial.jpg', render: true,
     blurb: 'The widest range of plot sizes we represent — for a family home today, or an investment that holds its value.',
   },
 ]
@@ -74,30 +74,52 @@ export const CORRIDORS = [
   { id: 'bypass', n: '03', t: 'Bypass Road & Mangliya', d: 'Settled connectivity, larger plots, villas already coming up.', q: 'Mangliya, Indore, Madhya Pradesh' },
   { id: 'rau', n: '04', t: 'Rau & Mayakhedi', d: 'Ready-to-possess townships with neighbours already living there.', q: 'Rau, Indore, Madhya Pradesh' },
 ]
-export const mapEmbed = (q) => `https://www.google.com/maps?q=${encodeURIComponent(q)}&z=13&output=embed`
 export const mapLink = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`
-
-export const WHY = [
-  { n: '01', t: "You pay the developer's price.", d: 'Our fee comes from Omaxe or Godrej, never from you.' },
-  { n: '02', t: 'Papers before payment.', d: 'RERA registration, T&CP layout approval and title are checked and shown to you — in writing — before you book.' },
-  { n: '03', t: 'One person, start to finish.', d: 'The advisor who shows you the plot is the one who sits with you at the registry, and who picks up the phone after possession.' },
-]
 
 export const FOUNDERS = [
   { name: 'Ashish Barjatya', role: 'Founder & Principal', photo: 'ashish-barjatya.jpg' },
   { name: 'Rajneesh Jain', role: 'Founder', photo: 'rajneesh-jain.jpg' },
 ]
 export const FOUNDER_NOTE = {
-  text: `I started in Indore real estate ${FOUNDED_YEAR ? 'in ' + FOUNDED_YEAR : 'twenty years ago'}, when Omaxe City was still a boundary wall on the Mayakhedi road. Most of the families we work with today came through someone we helped before. That is the only marketing we have ever relied on — and the reason we only take on projects we would buy ourselves.`,
+  text: 'Most of our families came through someone we helped before. That is our only marketing.',
   by: 'Ashish Barjatya',
 }
 
-export const PROCESS = [
-  { n: '01', when: 'Day 0', t: 'You message or call.', d: "We ask three things: budget, plot size, and whether it's to build on or to invest." },
-  { n: '02', when: 'Within a week', t: 'Site visits.', d: 'Two or three plots, with someone who knows the ground. We arrange pick-up anywhere in Indore.' },
-  { n: '03', when: 'Before you book', t: 'Papers on the table.', d: 'RERA certificate, T&CP layout approval, title documents, payment schedule. You see everything first.' },
-  { n: '04', when: 'Booking to possession', t: 'Same advisor, same number.', d: 'Allotment, payment milestones, registry and handover — one point of contact throughout.' },
-]
-
 export const BUDGETS = ['Under ₹30 lakh', '₹30 – 50 lakh', '₹50 lakh – 1 crore', 'Above ₹1 crore']
 export const PURPOSES = ["My family's home", 'Investment']
+
+/* ── Placeholders for the blueprint sections. Replace the [TO FILL] items; anything left empty shows a placeholder. ── */
+export const LIFE_TILES = [
+  { image: 'omaxe-gallery-1.jpg', caption: '[TO FILL] caption' },
+  { image: 'godrej-township.jpg', caption: '[TO FILL] caption' },
+  { image: 'omaxe-township.jpg', caption: '[TO FILL] caption' },
+  { image: 'omaxe-hills-2.jpg', caption: '[TO FILL] caption' },
+  { image: 'indore-super-corridor.jpg', caption: '[TO FILL] caption' },
+]
+// Photos for the awards carousel (public/img/awards).
+export const AWARD_PHOTOS = [
+  { file: 'award-ceremony-backdrop', title: 'Annual Award Ceremony 2025–26', meta: 'Celebrating excellence, honouring achievement · Nakhrali Dhani, 22 April 2026' },
+  { file: 'godrej-partner-connect-award', title: 'Godrej Partner Connect', meta: 'On stage at the Verdania Estate partner meet · Godrej Properties' },
+  { file: 'aba-team-awards', title: 'The ABA team', meta: 'Annual Award Ceremony 2025–26' },
+  { file: 'award-handover', title: 'Honouring achievement', meta: 'Annual Award Ceremony 2025–26 · Nakhrali Dhani' },
+  { file: 'godrej-partner-connect', title: 'Verdania Estate celebration', meta: 'Godrej Partner Connect · Godrej Properties' },
+  { file: 'award-winner', title: 'Celebrating excellence', meta: 'Annual Award Ceremony 2025–26' },
+  { file: 'award-ceremony-stage', title: 'On stage', meta: 'Annual Award Ceremony 2025–26 · Nakhrali Dhani' },
+]
+export const FAQS = [
+  { q: 'Are these projects RERA-registered?', a: "Yes. Every project we sell is registered with MP-RERA. We share the registration number before you book, and you can check it yourself at rera.mp.gov.in. For a project marked 'Launching soon', we take bookings only once its RERA registration is issued." },
+  { q: 'Can I get a home loan for a plot?', a: 'Yes. Most major banks offer plot loans for residential plots in approved, RERA-registered layouts. The loan usually covers a large share of the plot price and you pay the rest as a down payment. If you plan to build soon, ask the bank about a combined plot and construction loan. We help you put together the documents the bank asks for.' },
+  { q: 'Which documents will I see before I book?', a: "The project's RERA certificate, the T&CP layout approval, the title documents for the land, and the full payment schedule. We put them on the table and walk you through them before you pay anything. Once you book, you receive the allotment letter and the agreement for sale." },
+  { q: 'How does the registry work?', a: "Once the payments due under your schedule are complete, the sale deed is registered in your name at the Sub-Registrar office. You pay the stamp duty and registration fee at the rates set by the Madhya Pradesh government. Your advisor prepares the paperwork with you and sits with you on registry day." },
+  { q: 'Can NRIs buy plots here?', a: 'Yes. NRIs and OCI cardholders can buy residential plots in India; the restriction under FEMA is on agricultural land, plantations and farmhouses. Payment must come through normal banking channels, such as your NRE or NRO account. If you cannot be in Indore, a family member can complete the registry for you with a power of attorney.' },
+  { q: 'How do site visits work?', a: 'Message or call us with your budget and plot size, and we shortlist two or three plots worth seeing. We arrange pick-up anywhere in Indore and show you the ground with someone who knows it well. Visits run on weekdays and Saturdays, and on Sundays by appointment.' },
+]
+export const SOCIAL = [
+  { name: 'Instagram', url: '' },
+  { name: 'Facebook', url: '' },
+  { name: 'YouTube', url: '' },
+  { name: 'LinkedIn', url: '' },
+]
+
+// Ask the Projects section to switch to the right tab and scroll to this project's card.
+export const goToProject = (p) => window.dispatchEvent(new CustomEvent('goto-project', { detail: { dev: p.dev, id: p.id } }))

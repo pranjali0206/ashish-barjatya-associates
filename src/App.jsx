@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import useSmoothScroll from './hooks/useSmoothScroll'
 import Preloader, { shouldSkipPreloader } from './components/Preloader'
-import Cursor from './components/Cursor'
 import Nav from './components/Nav'
-import Hero from './components/Hero'
-import PartnerStrip from './components/PartnerStrip'
+import HeroHalo from './components/HeroHalo'
+import ProofStrip from './components/ProofStrip'
+import LifeRibbon from './components/LifeRibbon'
 import Projects from './components/Projects'
-import CtaBand from './components/CtaBand'
-import Corridors from './components/Corridors'
-import WhyAbout from './components/WhyAbout'
-import Process from './components/Process'
+import Location from './components/Location'
+import Founders from './components/Founders'
+import Awards from './components/Awards'
+import Faq from './components/Faq'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Fab from './components/Fab'
@@ -22,16 +22,16 @@ export default function App() {
   return (
     <>
       {!skip && <Preloader onDone={() => setReady(true)} />}
-      <Cursor />
       <Nav ready={ready} />
       <main>
-        <Hero ready={ready} />
-        <PartnerStrip />
+        <HeroHalo />
+        <ProofStrip />
+        <LifeRibbon />
         <Projects />
-        <CtaBand />
-        <Corridors />
-        <WhyAbout />
-        <Process />
+        <Location />
+        <Founders />
+        <Awards />
+        <Faq />
         <Contact />
       </main>
       <Footer />
