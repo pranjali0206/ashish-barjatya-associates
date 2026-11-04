@@ -81,12 +81,13 @@
 .seal{position:absolute;width:0;height:0}
 .stageD .seal{left:300px;top:140px}
 .seal>*{position:absolute;left:0;top:0;transform:translate(-50%,-50%)}
-.glow{width:var(--glow);height:var(--glow);border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,.45) 0%,rgba(147,197,253,.2) 40%,transparent 68%);animation:breathe 4.5s ease-in-out -2s infinite}
-@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.7}50%{transform:translate(-50%,-50%) scale(1.14);opacity:1}}
-.dashed{width:var(--dash);height:var(--dash);border-radius:50%;border:1px dashed rgba(29,78,216,.28);animation:spinrev 60s linear -22s infinite}
-@keyframes spinrev{from{transform:translate(-50%,-50%) rotate(360deg)}to{transform:translate(-50%,-50%) rotate(0)}}
-.lightRing{width:var(--ring);height:var(--ring);border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(37,99,235,.95) 70deg,transparent 130deg,transparent 180deg,rgba(224,180,60,.95) 250deg,transparent 310deg);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px));animation:spin 9s linear -4s infinite}
-@keyframes spin{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+/* animated rings centre with margins, not translate(-50%): a percentage inside a running transform animation can stay stuck at its old size when the stage switches between desktop and mobile */
+.glow{width:var(--glow);height:var(--glow);margin:calc(var(--glow)/-2) 0 0 calc(var(--glow)/-2);transform:none;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,.45) 0%,rgba(147,197,253,.2) 40%,transparent 68%);animation:breathe 4.5s ease-in-out -2s infinite}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.14);opacity:1}}
+.dashed{width:var(--dash);height:var(--dash);margin:calc(var(--dash)/-2) 0 0 calc(var(--dash)/-2);transform:none;border-radius:50%;border:1px dashed rgba(29,78,216,.28);animation:spinrev 60s linear -22s infinite}
+@keyframes spinrev{from{transform:rotate(360deg)}to{transform:rotate(0)}}
+.lightRing{width:var(--ring);height:var(--ring);margin:calc(var(--ring)/-2) 0 0 calc(var(--ring)/-2);transform:none;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(37,99,235,.95) 70deg,transparent 130deg,transparent 180deg,rgba(224,180,60,.95) 250deg,transparent 310deg);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,transparent calc(100% - 2.5px),#000 calc(100% - 2px));animation:spin 9s linear -4s infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 .orbit{width:var(--orbit);height:var(--orbit);border-radius:50%;border:1px solid rgba(29,78,216,.14);transform:translate(-50%,-50%) scaleY(.3)}
 .orbitSpin{position:absolute;inset:-1px;animation:spinplain 14s linear -6s infinite}
 @keyframes spinplain{to{transform:rotate(360deg)}}

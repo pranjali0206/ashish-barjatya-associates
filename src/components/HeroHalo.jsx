@@ -105,7 +105,7 @@ export default function HeroHalo() {
   const sealRef = useRef(null)
   const [mw, setMw] = useState(null)
   const [scale, setScale] = useState(1)
-  const [mobile, setMobile] = useState(false)
+  const [mobile, setMobile] = useState(() => window.innerWidth <= 768)
   const [menu, setMenu] = useState(false)
   const [openDev, setOpenDev] = useState(null)
   const [parallaxOn, setParallaxOn] = useState(false)
