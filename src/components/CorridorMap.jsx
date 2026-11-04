@@ -1,4 +1,4 @@
-import { CORRIDORS, PROJECTS, goToProject } from '../data'
+import { CORRIDORS, PROJECTS, mapLink } from '../data'
 
 /* Schematic map (placeholder for a real map): four corridors radiate from the city centre.
    Each corridor is a cubic Bézier; project pins sit along it at fixed positions. Not to scale. */
@@ -45,14 +45,13 @@ export default function CorridorMap({ active, onSelect }) {
               const [x, y] = bez(g.pts, t)
               const p = PROJECTS.find((q) => q.id === id)
               if (!p) return null
-              const go = (e) => { e.stopPropagation(); goToProject(p) }
               return (
-                <g key={id} className="map-pin" role="link" tabIndex={0} aria-label={`Go to ${p.name}`}
-                  onClick={go} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(e) } }}>
+                <a key={id} className="map-pin" href={mapLink(`${p.name}, ${p.area}`)} target="_blank" rel="noopener"
+                  aria-label={`Open ${p.name} in Google Maps (opens in a new tab)`} onClick={(e) => e.stopPropagation()}>
                   <circle className="pin-hit" cx={x} cy={y} r="18" fill="transparent" />
                   <circle className="pin-dot" cx={x} cy={y} r="8" fill="#fff" stroke={on ? '#1D4ED8' : '#9FB4E6'} strokeWidth="3" />
                   <text x={x} y={y + 28} textAnchor="middle" fontFamily="Inter, sans-serif" fontWeight={on ? 500 : 400} fontSize="12.5" fill={on ? '#0B1F5C' : '#4F5D86'} stroke="#F8FAFF" strokeWidth="4" paintOrder="stroke">{p.name}</text>
-                </g>
+                </a>
               )
             })}
           </g>

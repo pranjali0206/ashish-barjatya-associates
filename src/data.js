@@ -89,12 +89,19 @@ export const BUDGETS = ['Under ₹30 lakh', '₹30 – 50 lakh', '₹50 lakh –
 export const PURPOSES = ["My family's home", 'Investment']
 
 /* ── Placeholders for the blueprint sections. Replace the [TO FILL] items; anything left empty shows a placeholder. ── */
+// "Your dreams, in reality" ribbon (public/img/life). `alt` describes the photo; `credit` is required by the photo's licence.
 export const LIFE_TILES = [
-  { image: 'omaxe-gallery-1.jpg', caption: '[TO FILL] caption' },
-  { image: 'godrej-township.jpg', caption: '[TO FILL] caption' },
-  { image: 'omaxe-township.jpg', caption: '[TO FILL] caption' },
-  { image: 'omaxe-hills-2.jpg', caption: '[TO FILL] caption' },
-  { image: 'indore-super-corridor.jpg', caption: '[TO FILL] caption' },
+  { image: 'life/children-playing.jpg', caption: 'Evenings full of laughter', alt: 'Children laughing as they play under a colourful parachute' },
+  { image: 'life/omaxe-city-villas.jpg', caption: 'Neighbours on the same lane', alt: 'A row of white villas in Omaxe City, Indore' },
+  { image: 'life/kid-cricket-park.jpg', caption: 'Room to run and play', alt: 'A child playing cricket on a green lawn' },
+  { image: 'life/omaxe-hills-home.jpg', caption: 'A home of your own', alt: 'A two-storey home at Omaxe Hills, Indore' },
+  { image: 'life/family-weekend.jpg', caption: 'Weekends together', alt: 'A family splashing in a swimming pool' },
+]
+export const LIFE_CREDITS = [
+  { text: 'Children under a parachute: Johan Bichel Lindegaard', license: 'CC BY 2.0', licenseUrl: 'https://creativecommons.org/licenses/by/2.0/', source: 'https://commons.wikimedia.org/wiki/File:School_children_inside_parachute,_India.jpg' },
+  { text: 'Child playing cricket: Slyronit', license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/', source: 'https://commons.wikimedia.org/wiki/File:A_kid_playing_cricket,_Lodhi_gardens,_Delhi.jpg' },
+  { text: 'Township homes: Omaxe Ltd' },
+  { text: 'Family at the pool: Godrej Properties' },
 ]
 // Photos for the awards carousel (public/img/awards).
 export const AWARD_PHOTOS = [

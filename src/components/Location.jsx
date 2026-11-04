@@ -34,7 +34,7 @@ export default function Location() {
 
           <div className="map-col">
           <div className="card map-card">
-            <p className="map-hint"><PinIcon />Click a pin on the map to jump to that project.</p>
+            <p className="map-hint"><PinIcon />Click a pin to see that project's location in Google Maps.</p>
             <CorridorMap active={active} onSelect={setActive} />
             <div className="map-cap">
               <span>{cur.t} · Indore</span>
