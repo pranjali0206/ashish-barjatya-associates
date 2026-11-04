@@ -1,7 +1,7 @@
 export const img = (name) => `${import.meta.env.BASE_URL}img/${name}`
 
-export const PHONE = '+91 78287 26107'
-export const PHONE_RAW = '917828726107'
+export const PHONE = '+91 93000 24141'
+export const PHONE_RAW = '919300024141'
 export const wa = (text) => `https://wa.me/${PHONE_RAW}?text=${encodeURIComponent(text)}`
 
 /* ──────────────────────────────────────────────────────────────
