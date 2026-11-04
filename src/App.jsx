@@ -1,6 +1,4 @@
-import { useState } from 'react'
 import useSmoothScroll from './hooks/useSmoothScroll'
-import Preloader, { shouldSkipPreloader } from './components/Preloader'
 import Nav from './components/Nav'
 import HeroHalo from './components/HeroHalo'
 import ProofStrip from './components/ProofStrip'
@@ -15,14 +13,11 @@ import Footer from './components/Footer'
 import Fab from './components/Fab'
 
 export default function App() {
-  const [skip] = useState(() => shouldSkipPreloader())
-  const [ready, setReady] = useState(skip)
-  useSmoothScroll(ready)
+  useSmoothScroll()
 
   return (
     <>
-      {!skip && <Preloader onDone={() => setReady(true)} />}
-      <Nav ready={ready} />
+      <Nav />
       <main>
         <HeroHalo />
         <ProofStrip />
@@ -35,7 +30,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <Fab ready={ready} />
+      <Fab />
     </>
   )
 }

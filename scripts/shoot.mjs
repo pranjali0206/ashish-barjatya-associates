@@ -18,7 +18,7 @@ async function capture(name, viewport) {
   page.on('pageerror', (e) => logs.push(`[pageerror] ${e.message}`))
   await page.setViewport(viewport)
   await page.goto(URL, { waitUntil: 'networkidle0' })
-  await new Promise((r) => setTimeout(r, 4200)) // preloader
+  await new Promise((r) => setTimeout(r, 4200)) // let the page settle
   // scroll through the page to trigger in-view reveals
   const total = await page.evaluate(() => document.documentElement.scrollHeight)
   for (let y = 0; y < total + viewport.height; y += Math.round(viewport.height * 0.6)) {

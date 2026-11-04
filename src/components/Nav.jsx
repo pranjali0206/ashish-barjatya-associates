@@ -12,7 +12,7 @@ const LINKS = [
 ]
 const EASE = [0.76, 0, 0.24, 1]
 
-export default function Nav({ ready }) {
+export default function Nav() {
   const [solid, setSolid] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -33,7 +33,7 @@ export default function Nav({ ready }) {
 
   return (
     <>
-      <motion.header className={`nav${solid ? ' solid' : ''}${open ? ' open' : ''}`} initial={{ y: -20, opacity: 0 }} animate={ready ? { y: 0, opacity: 1 } : {}} transition={{ duration: .7, ease: [0.22, 1, 0.36, 1] }}>
+      <motion.header className={`nav${solid ? ' solid' : ''}${open ? ' open' : ''}`} initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: .7, ease: [0.22, 1, 0.36, 1] }}>
         <div className="wrap nav-in">
           <a href="#top" className="brand" onClick={(e) => go(e, '#top')} aria-label="Ashish Barjatya Associates — top of page">
             <img src={img('aba-logo.jpeg')} alt="" width="42" height="42" />

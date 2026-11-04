@@ -20,7 +20,7 @@ public/img/          project photos, founder portraits, Omaxe + Godrej logos, og
 src/data.js          ALL copy, project data and client facts — edit here, not in components
 src/App.jsx          section order: Hero → PartnerStrip → Projects → CtaBand → Corridors
                      → WhyAbout → Process → Contact → Footer
-src/components/      one file per section + effects (Preloader, Cursor, SplitText, Reveal, Icons)
+src/components/      one file per section + effects (Cursor, SplitText, Reveal, Icons)
 src/styles/global.css design tokens + all styles
 scripts/shoot.mjs    dev helper: full-page desktop + mobile screenshots of the preview build
 scripts/overflow.mjs dev helper: lists elements overflowing the viewport
