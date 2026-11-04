@@ -54,12 +54,12 @@ export const PROJECTS = [
   },
   {
     id: 'godrej-greenview', dev: 'godrej', name: 'Godrej Greenview Estate', area: 'Indore–Ujjain Road, Indore', corridor: 'ujjain',
-    status: 'Booking open', tone: 'open', sizes: '1000 & 1250 sq ft', rera: '', image: 'godrej-greenview-aerial.jpg', render: true,
+    status: 'Booking open', tone: 'open', sizes: '1000 & 1250 sq ft', rera: '', image: 'godrej-greenview.jpg', render: true,
     blurb: 'A Godrej-managed plotted estate with clubhouse and landscaped greens, on the corridor getting metro connectivity.',
   },
   {
     id: 'godrej-verdania', dev: 'godrej', name: 'Godrej Verdania Estate', area: 'Bypass Road, Mangliya, Indore', corridor: 'bypass',
-    status: 'Booking open', tone: 'open', sizes: '1250 – 4000 sq ft', rera: '', image: 'godrej-verdania-aerial.jpg', render: true,
+    status: 'Booking open', tone: 'open', sizes: '1250 – 4000 sq ft', rera: '', image: 'godrej-verdania.jpg', render: true,
     blurb: 'The widest range of plot sizes we represent — for a family home today, or an investment that holds its value.',
   },
 ]
