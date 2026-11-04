@@ -91,7 +91,7 @@ export const PURPOSES = ["My family's home", 'Investment']
 /* ── Placeholders for the blueprint sections. Replace the [TO FILL] items; anything left empty shows a placeholder. ── */
 // "Your dreams, in reality" ribbon (public/img/life). `alt` describes the photo.
 export const LIFE_TILES = [
-  { image: 'life/children-playing.jpg', caption: 'Evenings full of laughter', alt: 'Children laughing as they run through a field of yellow mustard flowers' },
+  { image: 'life/children-playing.jpg', caption: 'Evenings full of laughter', alt: 'A smiling toddler in a sun hat playing with balloons and balls on a green garden lawn' },
   { image: 'life/omaxe-city-villas.jpg', caption: 'Neighbours on the same lane', alt: 'A row of white villas in Omaxe City, Indore' },
   { image: 'life/kid-cricket-park.jpg', caption: 'Room to run and play', alt: 'A child playing cricket on a green lawn' },
   { image: 'life/omaxe-hills-home.jpg', caption: 'A home of your own', alt: 'A two-storey home at Omaxe Hills, Indore' },
