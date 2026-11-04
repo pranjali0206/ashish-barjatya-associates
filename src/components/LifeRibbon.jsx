@@ -1,5 +1,4 @@
-import { Fragment } from 'react'
-import { img, LIFE_TILES, LIFE_CREDITS } from '../data'
+import { img, LIFE_TILES } from '../data'
 
 export default function LifeRibbon() {
   return (
@@ -18,16 +17,6 @@ export default function LifeRibbon() {
             </figure>
           ))}
         </div>
-        <p className="credits">
-          Photos:{' '}
-          {LIFE_CREDITS.map((c, i) => (
-            <Fragment key={c.text}>
-              {i > 0 && ' · '}
-              {c.source ? <a href={c.source} target="_blank" rel="noopener">{c.text}</a> : c.text}
-              {c.license && <> (<a href={c.licenseUrl} target="_blank" rel="noopener">{c.license}</a>, cropped)</>}
-            </Fragment>
-          ))}
-        </p>
       </div>
     </section>
   )

@@ -115,9 +115,6 @@ h3{font-size:22px;line-height:1.25}
 .tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:56px 20px 20px;background:linear-gradient(180deg,transparent,rgba(11,31,92,.82));font-family:var(--head);font-weight:600;font-size:18px;line-height:1.25;letter-spacing:-.02em;color:#fff}
 .tile img{transition:transform .8s var(--ease)}
 .tile:hover img{transform:scale(1.04)}
-.credits{margin-top:16px;font-size:12px;line-height:1.6;color:var(--muted)}
-.credits a{border-bottom:1px solid var(--border)}
-.credits a:hover{color:var(--navy);border-color:var(--navy)}
 
 /* Projects -------------------------------------------------- */
 .tabs{display:flex;gap:8px;border-bottom:1px solid var(--border);margin-bottom:32px}
