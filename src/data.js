@@ -21,16 +21,16 @@ export const HINDI_LINE = 'जहाँ सपनों को उनका प�
 
 export const STATS = [
   { n: `${YEARS}+`, l1: 'Years selling plots', l2: 'in Indore' },
-  { n: '6', l1: 'Townships,', l2: 'Omaxe & Godrej' },
+  { n: '5', l1: 'Townships,', l2: 'Omaxe & Godrej' },
   { n: '100+', l1: 'Families handed', l2: 'possession' },
 ]
 
 export const DEVELOPERS = {
-  omaxe: { name: 'Omaxe', logo: 'omaxe-logo.png', count: 4 },
+  omaxe: { name: 'Omaxe', logo: 'omaxe-logo.png', count: 3 },
   godrej: { name: 'Godrej Properties', logo: 'godrej-properties-logo.svg', count: 2 },
 }
 
-/* status tones: ready | developed | open | soon
+/* status tones: ready | developed | open
    Optional per project: rera ('P-IND-…') and price ('25 lakh' → "From ₹25 lakh"); left empty, the line is hidden. */
 export const PROJECTS = [
   {
@@ -49,11 +49,6 @@ export const PROJECTS = [
     blurb: 'A 90-acre integrated township with roads, parks and clubhouse already in place.',
   },
   {
-    id: 'omaxe-corridor', dev: 'omaxe', name: 'Omaxe Corridor', area: 'Super Corridor, Indore',
-    status: 'Launching soon', tone: 'soon', sizes: '1000 · 1200 · 1500 sq ft', rera: '', image: 'omaxe-corridor.jpg', render: true,
-    blurb: "On the city's fastest-growing axis, near the IT park and the airport road. Register for launch pricing.",
-  },
-  {
     id: 'godrej-greenview', dev: 'godrej', name: 'Godrej Greenview Estate', area: 'Indore–Ujjain Road, Indore', corridor: 'ujjain',
     status: 'Booking open', tone: 'open', sizes: '1000 & 1250 sq ft', rera: '', image: 'godrej-greenview.jpg', render: true,
     blurb: 'A Godrej-managed plotted estate with clubhouse and landscaped greens, on the corridor getting metro connectivity.',
@@ -67,7 +62,6 @@ export const PROJECTS = [
 
 export const rateListMsg = (p) => `Please send today's rate list and payment plan for ${p.name}, ${p.area}.`
 export const siteVisitMsg = (p) => `I would like to book a site visit for ${p.name}, ${p.area}.`
-export const launchMsg = (p) => `Please register my interest for the ${p.name} launch (${p.area}) and share launch pricing.`
 
 export const CORRIDORS = [
   { id: 'ujjain', n: '01', t: 'Indore–Ujjain Road', d: 'Highway widening and planned metro; the next established address.', q: 'Indore Ujjain Road, Indore, Madhya Pradesh' },
@@ -108,7 +102,7 @@ export const AWARD_PHOTOS = [
   { file: 'award-ceremony-stage', title: 'On stage', meta: 'Annual Award Ceremony 2025–26 · Nakhrali Dhani' },
 ]
 export const FAQS = [
-  { q: 'Are these projects RERA-registered?', a: "Yes. Every project we sell is registered with MP-RERA. We share the registration number before you book, and you can check it yourself at rera.mp.gov.in. For a project marked 'Launching soon', we take bookings only once its RERA registration is issued." },
+  { q: 'Are these projects RERA-registered?', a: "Yes. Every project we sell is registered with MP-RERA. We share the registration number before you book, and you can check it yourself at rera.mp.gov.in." },
   { q: 'Can I get a home loan for a plot?', a: 'Yes. Most major banks offer plot loans for residential plots in approved, RERA-registered layouts. The loan usually covers a large share of the plot price and you pay the rest as a down payment. If you plan to build soon, ask the bank about a combined plot and construction loan. We help you put together the documents the bank asks for.' },
   { q: 'Which documents will I see before I book?', a: "The project's RERA certificate, the T&CP layout approval, the title documents for the land, and the full payment schedule. We put them on the table and walk you through them before you pay anything. Once you book, you receive the allotment letter and the agreement for sale." },
   { q: 'How does the registry work?', a: "Once the payments due under your schedule are complete, the sale deed is registered in your name at the Sub-Registrar office. You pay the stamp duty and registration fee at the rates set by the Madhya Pradesh government. Your advisor prepares the paperwork with you and sits with you on registry day." },
