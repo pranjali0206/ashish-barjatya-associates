@@ -9,10 +9,10 @@ export default function Faq() {
           <h2>Things families ask us first.</h2>
         </div>
         <div className="faq">
-          {FAQS.map((f) => (
+          {FAQS.filter((f) => f.a).map((f) => (
             <details key={f.q}>
               <summary>{f.q}</summary>
-              <p>{f.a || <span className="todo">[TO FILL] answer</span>}</p>
+              <p>{f.a}</p>
             </details>
           ))}
         </div>

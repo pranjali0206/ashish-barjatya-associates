@@ -3,6 +3,7 @@ import { scrollToId } from '../hooks/useSmoothScroll'
 import { SocialIcon } from './Icons'
 
 export default function Footer() {
+  const social = SOCIAL.filter((s) => s.url)
   const go = (e, id) => { e.preventDefault(); scrollToId(id) }
   return (
     <footer className="footer">
@@ -15,14 +16,16 @@ export default function Footer() {
             </a>
             <p>Authorised channel partner for Omaxe and Godrej Properties in Indore {FOUNDED_YEAR ? `since ${FOUNDED_YEAR}` : `for over ${YEARS} years`}.</p>
             <div className="footer-meta">
-              <span>RERA Agent Reg. No. {RERA_AGENT_NO ? <a href={RERA_URL} target="_blank" rel="noopener">{RERA_AGENT_NO}</a> : '[NUMBER]'}</span>
+              {RERA_AGENT_NO && <span>RERA Agent Reg. No. <a href={RERA_URL} target="_blank" rel="noopener">{RERA_AGENT_NO}</a></span>}
               <a href="/privacy">Privacy policy</a>
             </div>
-            <div className="social">
-              {SOCIAL.map((s) => (
-                <a key={s.name} href={s.url || '#'} target={s.url ? '_blank' : undefined} rel="noopener" aria-label={s.name}><SocialIcon name={s.name} /></a>
-              ))}
-            </div>
+            {social.length > 0 && (
+              <div className="social">
+                {social.map((s) => (
+                  <a key={s.name} href={s.url} target="_blank" rel="noopener" aria-label={s.name}><SocialIcon name={s.name} /></a>
+                ))}
+              </div>
+            )}
           </div>
           <div>
             <h4>Projects</h4>

@@ -30,7 +30,8 @@ export const DEVELOPERS = {
   godrej: { name: 'Godrej Properties', logo: 'godrej-properties-logo.svg', count: 2 },
 }
 
-/* status tones: ready | developed | open | soon */
+/* status tones: ready | developed | open | soon
+   Optional per project: rera ('P-IND-…') and price ('25 lakh' → "From ₹25 lakh"); left empty, the line is hidden. */
 export const PROJECTS = [
   {
     id: 'omaxe-city-1', dev: 'omaxe', name: 'Omaxe City 1', area: 'Mayakhedi, Indore', corridor: 'rau',
@@ -48,7 +49,7 @@ export const PROJECTS = [
     blurb: 'A 90-acre integrated township with roads, parks and clubhouse already in place.',
   },
   {
-    id: 'omaxe-corridor', dev: 'omaxe', name: 'Omaxe Corridor', area: 'Super Corridor, Indore', corridor: 'super',
+    id: 'omaxe-corridor', dev: 'omaxe', name: 'Omaxe Corridor', area: 'Super Corridor, Indore',
     status: 'Launching soon', tone: 'soon', sizes: '1000 · 1200 · 1500 sq ft', rera: '', image: 'omaxe-corridor.jpg', render: true,
     blurb: "On the city's fastest-growing axis, near the IT park and the airport road. Register for launch pricing.",
   },
@@ -69,10 +70,9 @@ export const siteVisitMsg = (p) => `I would like to book a site visit for ${p.na
 export const launchMsg = (p) => `Please register my interest for the ${p.name} launch (${p.area}) and share launch pricing.`
 
 export const CORRIDORS = [
-  { id: 'super', n: '01', t: 'Super Corridor', d: 'The westward growth axis: IT park, airport road, institutional belt. The place to buy early.', q: 'Super Corridor, Indore, Madhya Pradesh' },
-  { id: 'ujjain', n: '02', t: 'Indore–Ujjain Road', d: 'Highway widening and planned metro; the next established address.', q: 'Indore Ujjain Road, Indore, Madhya Pradesh' },
-  { id: 'bypass', n: '03', t: 'Bypass Road & Mangliya', d: 'Settled connectivity, larger plots, villas already coming up.', q: 'Mangliya, Indore, Madhya Pradesh' },
-  { id: 'rau', n: '04', t: 'Rau & Mayakhedi', d: 'Ready-to-possess townships with neighbours already living there.', q: 'Rau, Indore, Madhya Pradesh' },
+  { id: 'ujjain', n: '01', t: 'Indore–Ujjain Road', d: 'Highway widening and planned metro; the next established address.', q: 'Indore Ujjain Road, Indore, Madhya Pradesh' },
+  { id: 'bypass', n: '02', t: 'Bypass Road & Mangliya', d: 'Settled connectivity, larger plots, villas already coming up.', q: 'Mangliya, Indore, Madhya Pradesh' },
+  { id: 'rau', n: '03', t: 'Rau & Mayakhedi', d: 'Ready-to-possess townships with neighbours already living there.', q: 'Rau, Indore, Madhya Pradesh' },
 ]
 export const mapLink = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`
 
@@ -88,7 +88,7 @@ export const FOUNDER_NOTE = {
 export const BUDGETS = ['Under ₹30 lakh', '₹30 – 50 lakh', '₹50 lakh – 1 crore', 'Above ₹1 crore']
 export const PURPOSES = ["My family's home", 'Investment']
 
-/* ── Placeholders for the blueprint sections. Replace the [TO FILL] items; anything left empty shows a placeholder. ── */
+/* ── Content for the blueprint sections. Anything left empty ('') stays hidden on the page. ── */
 // "Your dreams, in reality" ribbon (public/img/life). `alt` describes the photo.
 export const LIFE_TILES = [
   { image: 'life/children-playing.jpg', caption: 'Evenings full of laughter', alt: 'A smiling toddler in a sun hat playing with balloons and balls on a green garden lawn' },

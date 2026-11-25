@@ -11,7 +11,7 @@ export default function Location() {
       <div className="wrap">
         <div className="sec-head">
           <span className="label">Where these projects sit</span>
-          <h2>Four corridors. Every project on one of them.</h2>
+          <h2>Three corridors. Find the one that suits you.</h2>
           <p className="lede">Indore grows along a handful of roads. Knowing which one suits your commute, your budget and your timeline is half the decision.</p>
         </div>
         <div className="loc-grid">
@@ -40,7 +40,7 @@ export default function Location() {
               <span>{cur.t} · Indore</span>
               <a className="link" href={mapLink(cur.q)} target="_blank" rel="noopener">Open in Google Maps</a>
             </div>
-            <p className="map-note">Schematic, not to scale. <span className="todo">[TO FILL] real map</span></p>
+            <p className="map-note">Schematic, not to scale.</p>
           </div>
         </div>
         </div>

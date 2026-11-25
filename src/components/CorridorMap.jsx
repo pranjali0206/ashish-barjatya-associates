@@ -1,13 +1,12 @@
 import { CORRIDORS, PROJECTS, mapLink } from '../data'
 
-/* Schematic map (placeholder for a real map): four corridors radiate from the city centre.
+/* Schematic map: three corridors radiate from the city centre.
    Each corridor is a cubic Bézier; project pins sit along it at fixed positions. Not to scale. */
-const K = 1.12 // stretch the layout vertically so the map fills its card
+const K = 0.82 // scale the layout vertically so the map fills its card
 const H = Math.round(700 * K)
 const sc = ([x, y]) => [x, y * K]
 const C = sc([280, 380])
 const GEO = {
-  super: { pts: [C, [210, 400], [130, 430], [50, 422]].map((p, i) => (i ? sc(p) : p)), label: [24, 398 * K, 'start'], pins: { 'omaxe-corridor': 0.6 } },
   ujjain: { pts: [C, [270, 290], [240, 190], [210, 92]].map((p, i) => (i ? sc(p) : p)), label: [210, 68 * K, 'middle'], pins: { 'godrej-greenview': 0.62 } },
   bypass: { pts: [C, [350, 400], [440, 450], [510, 560]].map((p, i) => (i ? sc(p) : p)), label: [540, 596 * K, 'end'], pins: { 'omaxe-city-2': 0.45, 'godrej-verdania': 0.8 } },
   rau: { pts: [C, [285, 470], [265, 560], [240, 640]].map((p, i) => (i ? sc(p) : p)), label: [240, 674 * K, 'middle'], pins: { 'omaxe-city-1': 0.42, 'omaxe-hills': 0.8 } },
@@ -22,7 +21,7 @@ const d = ([p0, p1, p2, p3]) => `M${p0[0]} ${p0[1]} C${p1[0]} ${p1[1]} ${p2[0]} 
 
 export default function CorridorMap({ active, onSelect }) {
   return (
-    <svg className="map-svg" viewBox={`0 0 560 ${H}`} role="group" aria-label="Schematic map of the four growth corridors around Indore" preserveAspectRatio="xMidYMid meet">
+    <svg className="map-svg" viewBox={`0 0 560 ${H}`} role="group" aria-label="Schematic map of the three growth corridors around Indore" preserveAspectRatio="xMidYMid meet">
       <defs>
         <pattern id="mapgrid" width="40" height="40" patternUnits="userSpaceOnUse">
           <path d="M40 0H0V40" fill="none" stroke="#E6EDFB" strokeWidth="1" />

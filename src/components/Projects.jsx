@@ -26,11 +26,13 @@ function Card({ p, flash }) {
         <p>{p.blurb}</p>
         <div className="spec">
           <div><small>Plot sizes</small><b>{p.sizes}</b></div>
-          <div><small>Price</small><b>From {p.price ? `₹${p.price}` : <span className="todo">₹[PRICE]</span>}</b></div>
+          {p.price && <div><small>Price</small><b>From ₹{p.price}</b></div>}
         </div>
-        <div className="pcard-rera">
-          RERA: {p.rera ? <a href={RERA_URL} target="_blank" rel="noopener">{p.rera}</a> : <span className="todo">[NUMBER]</span>}
-        </div>
+        {p.rera && (
+          <div className="pcard-rera">
+            RERA: <a href={RERA_URL} target="_blank" rel="noopener">{p.rera}</a>
+          </div>
+        )}
         <div className="pcard-actions">
           <a className="btn btn-primary" href="#contact" onClick={(e) => { e.preventDefault(); enquire(p) }}>Enquire <span className="btn-arrow"><ArrowIcon /></span></a>
         </div>
@@ -94,8 +96,6 @@ export default function Projects() {
         <div className="pgrid" role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`}>
           {list.map((p) => <Card key={p.id} p={p} flash={flashId === p.id} />)}
         </div>
-
-        <p className="pnote">Prices, availability and approvals change; we send today's rate list on WhatsApp. Images of clubhouses and villas are artist's impressions.</p>
       </div>
     </section>
   )
