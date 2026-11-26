@@ -1,8 +1,13 @@
+import { navigate } from './nav'
+
 export const img = (name) => `${import.meta.env.BASE_URL}img/${name}`
 
 export const PHONE = '+91 93000 24141'
 export const PHONE_RAW = '919300024141'
 export const wa = (text) => `https://wa.me/${PHONE_RAW}?text=${encodeURIComponent(text)}`
+export const LANDLINE = '0731-4062169'
+export const LANDLINE_RAW = '917314062169'
+export const EMAIL = 'omaxedealer@gmail.com'
 
 /* ──────────────────────────────────────────────────────────────
    Facts the founder confirms once. Leave '' / null / [] to HIDE
@@ -10,10 +15,11 @@ export const wa = (text) => `https://wa.me/${PHONE_RAW}?text=${encodeURIComponen
 ────────────────────────────────────────────────────────────── */
 export const YEARS = 20
 export const FOUNDED_YEAR = null           // e.g. 2005 → footer reads "since 2005"
-export const RERA_AGENT_NO = ''            // exactly as printed on rera.mp.gov.in
+export const RERA_AGENT_NO = 'A-IND-17-007'            // exactly as printed on rera.mp.gov.in
 export const RERA_URL = 'https://rera.mp.gov.in'
-export const ADDRESS = ''                  // 'Street, landmark, Indore 452xxx'
-export const MAPS_URL = ''                 // Google Maps share link for the office
+export const GST_NO = '23ACFPB4437K1ZV'
+export const ADDRESS = 'FF-159, 1st Floor, Orbit Mall, AB Road, Indore 452001'
+export const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=Orbit+Mall%2C+AB+Road%2C+Indore'
 export const HOURS = ''                    // 'Mon–Sat 10:30 am – 7:30 pm'
 export const GOOGLE = { rating: '', count: 0, url: '' }
 export const TESTIMONIALS = []             // [{ quote, name, locality, project, year }]
@@ -21,12 +27,12 @@ export const HINDI_LINE = 'जहाँ सपनों को उनका प�
 
 export const STATS = [
   { n: `${YEARS}+`, l1: 'Years selling plots', l2: 'in Indore' },
-  { n: '5', l1: 'Townships,', l2: 'Omaxe & Godrej' },
-  { n: '100+', l1: 'Families handed', l2: 'possession' },
+  { n: '8', l1: 'Branch offices', l2: 'across Indore' },
+  { n: '10,000+', l1: 'Satisfied', l2: 'clients' },
 ]
 
 export const DEVELOPERS = {
-  omaxe: { name: 'Omaxe', logo: 'omaxe-logo.png', count: 3 },
+  omaxe: { name: 'Omaxe', logo: 'omaxe-logo.png', count: 5 },
   godrej: { name: 'Godrej Properties', logo: 'godrej-properties-logo.svg', count: 2 },
 }
 
@@ -34,29 +40,39 @@ export const DEVELOPERS = {
    Optional per project: rera ('P-IND-…') and price ('25 lakh' → "From ₹25 lakh"); left empty, the line is hidden. */
 export const PROJECTS = [
   {
-    id: 'omaxe-city-1', dev: 'omaxe', name: 'Omaxe City 1', area: 'Mayakhedi, Indore', corridor: 'rau',
-    status: 'Ready to possess', tone: 'ready', sizes: '1000 & 1453 sq ft', rera: '', image: 'omaxe-city-1.jpg', render: false,
-    blurb: 'A lived-in township with schools, shops and neighbours already there. Register and start building.',
+    id: 'omaxe-city-1', slug: 'omaxe-city-1', dev: 'omaxe', name: 'Omaxe City 1', area: 'Mayakhedi, Indore', corridor: 'rau',
+    status: 'Ready to possess', tone: 'ready', sizes: '800 – 3100 sq ft', rera: '', image: 'omaxe-city-1.jpg', render: false,
+    blurb: 'A lived-in township with a clubhouse, swimming pool, temple and shopping complex, neighbours already there. Register and start building.',
   },
   {
-    id: 'omaxe-city-2', dev: 'omaxe', name: 'Omaxe City 2', area: 'Mangliya, Bypass Road, Indore', corridor: 'bypass',
-    status: 'Developed township', tone: 'developed', sizes: '1937 – 4359 sq ft', rera: '', image: 'omaxe-city-2.jpg', render: false,
+    id: 'omaxe-city-2', slug: 'omaxe-city-2', dev: 'omaxe', name: 'Omaxe City 2', area: 'Mangliya, AB Bypass Road, Indore', corridor: 'bypass',
+    status: 'Developed township', tone: 'developed', sizes: '1453 – 4359 sq ft', rera: '', image: 'omaxe-city-2.jpg', render: false,
     blurb: 'Larger plots for families who want a garden and room to grow.',
   },
   {
-    id: 'omaxe-hills', dev: 'omaxe', name: 'Omaxe Hills', area: 'Rau, Indore', corridor: 'rau',
-    status: 'Developed township', tone: 'developed', sizes: '1000 & 1453 sq ft', rera: '', image: 'omaxe-hills.jpg', render: false,
+    id: 'omaxe-hills', slug: 'omaxe-hills', dev: 'omaxe', name: 'Omaxe Hills', area: 'Rau, Indore', corridor: 'rau',
+    status: 'Developed township', tone: 'developed', sizes: '880 – 4000 sq ft', rera: '', image: 'omaxe-hills.jpg', render: false,
     blurb: 'A 90-acre integrated township with roads, parks and clubhouse already in place.',
   },
   {
-    id: 'godrej-greenview', dev: 'godrej', name: 'Godrej Greenview Estate', area: 'Indore–Ujjain Road, Indore', corridor: 'ujjain',
-    status: 'Booking open', tone: 'open', sizes: '1000 & 1250 sq ft', rera: '', image: 'godrej-greenview.jpg', render: true,
-    blurb: 'A Godrej-managed plotted estate with clubhouse and landscaped greens, on the corridor getting metro connectivity.',
+    id: 'omaxe-ujjain', slug: 'omaxe-ujjain', dev: 'omaxe', name: 'Omaxe Ujjain', area: 'Lalpur, Ujjain', corridor: '',
+    status: 'Premium plots', tone: 'open', sizes: '800 sq ft', rera: '', image: 'omaxe/ujjain-hero.jpg', render: false,
+    blurb: 'An Omaxe premium plotted development at Lalpur, Ujjain. Pricing and plot availability on request.',
   },
   {
-    id: 'godrej-verdania', dev: 'godrej', name: 'Godrej Verdania Estate', area: 'Bypass Road, Mangliya, Indore', corridor: 'bypass',
-    status: 'Booking open', tone: 'open', sizes: '1250 – 4000 sq ft', rera: '', image: 'godrej-verdania.jpg', render: true,
-    blurb: 'The widest range of plot sizes we represent — for a family home today, or an investment that holds its value.',
+    id: 'omaxe-ratlam', slug: 'omaxe-ratlam', dev: 'omaxe', name: 'Omaxe Ratlam', area: 'Pratap Nagar, Ratlam', corridor: '',
+    status: 'Ready plots', tone: 'ready', sizes: '800 & 1000 sq ft', rera: '', image: 'omaxe/ratlam-hero.jpg', render: false,
+    blurb: 'An Omaxe plotted development at Pratap Nagar, Ratlam, with ready 800 and 1000 sq ft plots.',
+  },
+  {
+    id: 'godrej-greenview', slug: 'godrej-greenview-estate', dev: 'godrej', name: 'Godrej Greenview Estate', area: 'Indore–Ujjain Road, Indore', corridor: 'ujjain',
+    status: 'Booking open', tone: 'open', sizes: '1000 & 1250 sq ft', rera: 'P-SWR-25-5772 · P-SWR-25-5648', image: 'godrej-greenview.jpg', render: true,
+    blurb: 'A Godrej plotted estate with five themed gardens and a 10,000 sq ft clubhouse, on the Ujjain road corridor getting metro connectivity.',
+  },
+  {
+    id: 'godrej-verdania', slug: 'godrej-verdania-estate', dev: 'godrej', name: 'Godrej Verdania Estate', area: 'AB Bypass Road, Mangliya, Indore', corridor: 'bypass',
+    status: 'Booking open', tone: 'open', sizes: '1250 · 1500 · 1800 · 2400 · 4000 sq ft', rera: 'P-SWR-25-5891', image: 'godrej-verdania.jpg', render: true,
+    blurb: 'A Godrej plotted estate with 45,000+ sq ft of central greens, box cricket and a kids’ adventure park — and the widest range of plot sizes we represent.',
   },
 ]
 
@@ -71,8 +87,8 @@ export const CORRIDORS = [
 export const mapLink = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`
 
 export const FOUNDERS = [
-  { name: 'Ashish Barjatya', role: 'Founder & Principal', photo: 'ashish-barjatya.jpg' },
-  { name: 'Rajneesh Jain', role: 'Founder', photo: 'rajneesh-jain.jpg' },
+  { name: 'Ashish Barjatya', role: 'Partner · LL.B. · Vastu Shastri', photo: 'ashish-barjatya.jpg' },
+  { name: 'Rajneesh Jain', role: 'Partner · Realtor', photo: 'rajneesh-jain.jpg' },
 ]
 export const FOUNDER_NOTE = {
   text: 'Most of our families came through someone we helped before. That is our only marketing.',
@@ -110,11 +126,11 @@ export const FAQS = [
   { q: 'How do site visits work?', a: 'Message or call us with your budget and plot size, and we shortlist two or three plots worth seeing. We arrange pick-up anywhere in Indore and show you the ground with someone who knows it well. Visits run on weekdays and Saturdays, and on Sundays by appointment.' },
 ]
 export const SOCIAL = [
-  { name: 'Instagram', url: '' },
+  { name: 'Instagram', url: 'https://www.instagram.com/ashish.barjatya_associates/' },
+  { name: 'YouTube', url: 'https://www.youtube.com/@ashishbarjatya2983' },
   { name: 'Facebook', url: '' },
-  { name: 'YouTube', url: '' },
   { name: 'LinkedIn', url: '' },
 ]
 
 // Ask the Projects section to switch to the right tab and scroll to this project's card.
-export const goToProject = (p) => window.dispatchEvent(new CustomEvent('goto-project', { detail: { dev: p.dev, id: p.id } }))
+export const goToProject = (p) => { if (p.slug) navigate(`/projects/${p.slug}`) }

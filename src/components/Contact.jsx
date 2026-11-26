@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { wa, PHONE, PHONE_RAW, PROJECTS, BUDGETS, PURPOSES, ADDRESS, MAPS_URL, HOURS } from '../data'
+import { wa, PHONE, PHONE_RAW, LANDLINE, LANDLINE_RAW, PROJECTS, BUDGETS, PURPOSES, ADDRESS, MAPS_URL, HOURS } from '../data'
 import { PhoneIcon, WaIcon, PinIcon, ClockIcon, ArrowIcon } from './Icons'
 
 const optionFor = (p) => `${p.name} · ${p.area}`
@@ -57,6 +57,7 @@ export default function Contact() {
           <p className="lede" style={{ marginTop: 16 }}>A plot for your family, an investment on a growth corridor, or an early allocation in an upcoming launch. Share a few details and we'll come back with options worth visiting.</p>
           <div className="contact-lines">
             <a className="big" href={`tel:+${PHONE_RAW}`}><PhoneIcon />{PHONE}</a>
+            {LANDLINE && <a href={`tel:+${LANDLINE_RAW}`}><PhoneIcon />{LANDLINE}</a>}
             {ADDRESS && (
               <address><PinIcon /><span>{ADDRESS}{MAPS_URL && <> · <a className="link" href={MAPS_URL} target="_blank" rel="noopener">Open in Maps</a></>}</span></address>
             )}

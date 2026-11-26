@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'motion/react'
 import { img, wa, PHONE, PHONE_RAW, DEVELOPERS, PROJECTS, YEARS } from '../data'
 import { scrollToId } from '../hooks/useSmoothScroll'
+import { navigate } from '../nav'
 import s from './HeroHalo.module.css'
 
 const LINKS = [
@@ -88,7 +89,7 @@ function Popover({ dev, side, onPick }) {
     <ul className={`${s.pop} ${side === 'l' ? s.popL : s.popR}`} id={`hh-list-${dev}`} aria-label={`${d.name} projects`}>
       {list.map((p) => (
         <li key={p.id}>
-          <a href={`#project-${p.id}`} onClick={(e) => onPick(e, p)}>
+          <a href={p.slug ? `/projects/${p.slug}` : `#project-${p.id}`} onClick={(e) => onPick(e, p)}>
             <span><b>{p.name}</b><small>{p.area}</small></span>
             <ArrowSmall />
           </a>
@@ -198,7 +199,8 @@ export default function HeroHalo() {
   const pick = (e, p) => {
     e.preventDefault()
     setOpenDev(null)
-    window.dispatchEvent(new CustomEvent('goto-project', { detail: { dev: p.dev, id: p.id } }))
+    if (p.slug) navigate(`/projects/${p.slug}`)
+    else window.dispatchEvent(new CustomEvent('goto-project', { detail: { dev: p.dev, id: p.id } }))
   }
 
   const go = (e, id) => { e.preventDefault(); setMenu(false); scrollToId(id) }

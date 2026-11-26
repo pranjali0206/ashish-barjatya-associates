@@ -1,4 +1,4 @@
-import { img, wa, PHONE, PHONE_RAW, PROJECTS, CORRIDORS, YEARS, FOUNDED_YEAR, ADDRESS, RERA_AGENT_NO, RERA_URL, SOCIAL } from '../data'
+import { img, wa, PHONE, PHONE_RAW, LANDLINE, LANDLINE_RAW, EMAIL, PROJECTS, CORRIDORS, YEARS, FOUNDED_YEAR, ADDRESS, RERA_AGENT_NO, RERA_URL, GST_NO, SOCIAL } from '../data'
 import { scrollToId } from '../hooks/useSmoothScroll'
 import { SocialIcon } from './Icons'
 
@@ -17,6 +17,7 @@ export default function Footer() {
             <p>Authorised channel partner for Omaxe and Godrej Properties in Indore {FOUNDED_YEAR ? `since ${FOUNDED_YEAR}` : `for over ${YEARS} years`}.</p>
             <div className="footer-meta">
               {RERA_AGENT_NO && <span>RERA Agent Reg. No. <a href={RERA_URL} target="_blank" rel="noopener">{RERA_AGENT_NO}</a></span>}
+              {GST_NO && <span>GST {GST_NO}</span>}
               <a href="/privacy">Privacy policy</a>
             </div>
             {social.length > 0 && (
@@ -39,7 +40,9 @@ export default function Footer() {
             <h4>Contact</h4>
             <ul>
               <li><a href={`tel:+${PHONE_RAW}`}>{PHONE}</a></li>
+              {LANDLINE && <li><a href={`tel:+${LANDLINE_RAW}`}>{LANDLINE}</a></li>}
               <li><a href={wa('Hello')} target="_blank" rel="noopener">WhatsApp</a></li>
+              {EMAIL && <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>}
               <li>{ADDRESS || 'Indore, Madhya Pradesh'}</li>
             </ul>
           </div>

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import Lenis from 'lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { navigate, setPendingScroll } from '../nav'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -10,7 +11,11 @@ export const getLenis = () => lenisInstance
 
 export function scrollToId(id, offset = 0) {
   const el = document.querySelector(id)
-  if (!el) return
+  if (!el) {
+    // target lives on the home page — go there, then scroll once it mounts
+    if (window.location.pathname !== '/') { setPendingScroll({ id, offset }); navigate('/') }
+    return
+  }
   if (lenisInstance) lenisInstance.scrollTo(el, { offset, duration: 1.4 })
   else el.scrollIntoView({ behavior: 'smooth' })
 }

@@ -14,7 +14,7 @@ export default function ProofStrip() {
               </div>
             ))}
           </div>
-          <p className="proof-line">Authorised sales partner of Omaxe and Godrej Properties; you pay the developer's price.</p>
+          <p className="proof-line">Authorised sales partner of Omaxe and Godrej Properties.</p>
         </div>
       </div>
     </section>
