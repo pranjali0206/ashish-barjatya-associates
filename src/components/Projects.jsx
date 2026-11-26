@@ -47,8 +47,8 @@ export default function Projects() {
           <h2>Townships we trust. Plots we stand behind.</h2>
           <p className="lede">Every project below is RERA-registered and checked by us before we show it to you. Tap any project to see plots, amenities, plans and location.</p>
         </div>
-        <DevSection dev="omaxe" />
         <DevSection dev="godrej" />
+        <DevSection dev="omaxe" />
       </div>
     </section>
   )
